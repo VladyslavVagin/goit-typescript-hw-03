@@ -35,7 +35,12 @@ abstract class House {
   abstract openDoor(key: Key): void;
 
   comeIn(person: Person): void {
-    key.getSignature() === this.key.getSignature() ? this.door = true : console.log('Door closed');
+    if (this.door) {
+      this.tenants.push(person);
+      console.log(`${person.getKey().getSignature()} Door is open.`);
+    } else {
+      console.log("Door is closed");
+    }
   }
 }
 // ===============================================================================================
